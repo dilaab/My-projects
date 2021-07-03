@@ -1,0 +1,108 @@
+include <stdio.h> 
+#include <string.h>               /*Header files*/        
+#include <conio.h> 
+#include <stdlib.h> 
+void main () 
+{ 
+int f,n;. 
+float secretnumber;               /*Variable deceleration*/
+float guess; 
+int guesscount=0; 
+int guesslimit=5; 
+int outofguesses=0; 
+printf("enter an integer number between 1 and 7\n");.
+scanf("%d",&n); 
+
+/*commands to print respective electromagnetic radiation 
+Corresponding to inputted integer*/
+
+switch( n){ 
+case 1:. 
+printf("Guess the frequency of radiowave\n");. 
+break; 
+case 2: 
+printf("Guess the frequency of microwave\n"); 
+break; 
+case 3: 
+printf("Guess the frequency of Infrared wave\n"); 
+break;                                                                       [06]
+case 4: 
+printf("Guess the frequency of visible rays\n");         
+break; 
+case 5: 
+printf("Guess the frequency of uv rays \n"); 
+break; 
+case 6: 
+printf("Guess the frequency of x rays \n"); 
+break; 
+case 7: 
+printf("Guess the frequency of gamma rays\n"); 
+break; } 
+
+/*commands to store frequency of respective electromagnetic radiation 
+in THz range Corresponding to inputted integer*/ 
+
+switch( n){ 
+case 1: 
+secretnumber=0.000001; 
+break; 
+case 2: 
+secretnumber=0.0006; 
+break; 
+case 3: 
+secretnumber = 1; 
+break; 
+case 4: 
+secretnumber = 380; 
+break; 
+[18]case 5: 
+secretnumber =750; 
+break;                                                                   [07]
+case 6: 
+secretnumber = 30000; 
+break; 
+case 7: 
+secretnumber = 30000000; 
+break; 
+}
+
+/*enter the loop if and only if guessed frequency not equal to correct frequency and user is not in out of of guesses.Otherwise print respective results*/ 
+while(guess !=secretnumber && outofguesses ==0) 
+{ 
+
+   if(guesscount<guesslimit)  /*input a number if guessing count less than guessing limit*/ 
+    printf("enter a frequency to guess in THz range\n"); 
+    scanf("%d",&guess); 
+
+/*display corresponding statement if guessed  frequency greater than correct frequency*/ 
+    if (secretnumber<guess)  
+    printf("Oops! your guess is greaterthan correct value\n"); 
+
+       /*display corresponding statement if guessed frequency less than correct frequency*/ 
+    else if(secretnumber>guess)
+     printf("Oops! your guess is lessthan correct value\n"); 
+
+    guesscount++;    /* incrementing guess count*/
+} 
+
+else{ 
+ 
+         outofguesses =1; /*process showing chance of guess isover*/ 
+       } 
+ }                                                                          [08]
+
+if (outofguesses ==1){ 
+
+/*displaying corresponding statement since chance to guess is over*/ 
+
+printf("You are out of guesses.Better luck next time\n"); 
+ }
+else{ 
+/*displaying user wins the game*/ 
+
+printf("you win, congratulations\n"); 
+ } 
+
+getch(); 
+
+} 
