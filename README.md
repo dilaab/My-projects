@@ -1,2 +1,2 @@
 # My-projects
-Simple projects , I had done during my college days
+Repository including various projects, I had done during my college days.
