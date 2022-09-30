@@ -1,0 +1,33 @@
+ Org 00H 
+Start:              Mov P0,#0FFh                             ;Making P0 as input port 
+                       Acall Delay                                  ;Call Delay 
+                       Mov A,P0                                    ;Getting switch value 
+                       CJNE A,#00H,Down 
+                       SJMP Up 
+ 
+Up:                 Mov A,#0FFh                              ;Data       
+                       Mov P1,A                                    ; Output Data to LEDs 
+                       Acall Delay 
+Repeat1:                                                              ;Count Up                                         
+                      Dec A                                            ;Decrement A by one 
+                      Mov P1,A                                      ;Output Data to LEDs 
+                      Acall Delay     
+                      CJNE A,#00H,Repeat1 
+                      SJMP Start 
+ 
+Down:           Mov A,#00H 
+                      Mov P1,A 
+                      Acall Delay   
+Repeat2:                                                           ;Count Down 
+                      Inc A                                          ;Increment A by one 
+                      Mov P1,A                                  ;Output Data to LEDs 
+                      Acall Delay 
+                      CJNE A,#0FFH,Repeat2 
+                      SJMP Start                                 ;Repeat 
+ 
+Delay:           Mov R0,#80h                            ;Outer Loop                  
+Again:           Mov R1,#0FFh                          ;Inner Loop 
+Here:             DJNZ R1,Here                          ;jump if R1 not 0 
+                      DJNZ R0,Again                        ;jump if R0 not 0 
+                      Ret 
+                      End       
